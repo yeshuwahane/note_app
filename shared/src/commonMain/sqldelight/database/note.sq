@@ -1,0 +1,52 @@
+CREATE TABLE noteEntity(
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    noteTitle TEXT NOT NULL,
+    noteBody TEXT NOT NULL,
+    createdAt INTEGER NOT NULL
+);
+
+getAllNotes:
+SELECT *
+FROM noteEntity
+ORDER BY noteTitle ASC;
+
+getRecentNotes:
+SELECT *
+FROM noteEntity
+ORDER BY createdAt DESC
+LIMIT :amount;
+
+insertNoteEntity:
+INSERT OR REPLACE
+INTO noteEntity(
+    id,
+    noteTitle,
+    noteBody,
+    createdAt
+) VALUES (?,?,?,?);
+
+deleteNote:
+DELETE FROM noteEntity
+WHERE id = :id;
+
+getNoteById:
+SELECT *
+FROM noteEntity
+WHERE id = :id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
